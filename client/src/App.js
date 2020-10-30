@@ -34,7 +34,8 @@ export default function App() {
   }
 
   function fetchMovies() {
-    fetch(`http://localhost:5000`)
+    // fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=33c89a65`)
+    fetch(`http://localhost:5000/${searchValue}`)
       .then((response) => response.json())
       .then((result) => setData(result))
       .catch((error) => console.log("error", error));
@@ -63,13 +64,13 @@ export default function App() {
                     <CardImg
                       top
                       width="100%"
-                      src={movie.Poster}
+                      src={movie.poster}
                       alt="Card image cap"
                     />
                     <CardBody className="bg-secondary">
-                      <CardTitle>{movie.Title}</CardTitle>
+                      <CardTitle>{movie.title}</CardTitle>
                       <CardText>
-                        {movie.Year}-{movie.Type}
+                        {movie.year}-{movie.type}
                       </CardText>
                       <Link
                         to={`/booking-page/${movie.imdbID}`}
